@@ -1,0 +1,11 @@
+package_id,package_name,package_type,monthly_fee,voice_minutes,sms_limit,data_limit_gb,validity_days,package_status
+PKG01,Super Data,Data,800,300,1000,30,30,Active
+PKG02,Smart Plus,Hybrid,1200,1000,2000,20,30,Active
+PKG03,Unlimited Voice,Voice,600,5000,1000,5,30,Active
+PKG04,Premium Max,Hybrid,2000,3000,5000,60,30,Active
+PKG05,Social Bundle,Data,350,100,500,10,30,Active
+PKG06,Business Pro,Business,2500,4000,3000,80,30,Active
+PKG07,Daily Saver,Hybrid,100,50,100,1,1,Active
+PKG08,Weekly Power,Hybrid,300,200,300,5,7,Active
+PKG09,Student Package,Data,500,200,1000,15,30,Active
+PKG10,Family Connect,Hybrid,1800,2000,3000,40,30,Active

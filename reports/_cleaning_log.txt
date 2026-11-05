@@ -1,0 +1,5 @@
+customers: 10000 -> 10000 rows | duplicate customer_ids removed=0 | missing per col: {'customer_id': 0, 'gender': 0, 'age': 0, 'city': 0, 'region': 0, 'join_date': 0, 'segment': 0, 'customer_type': 0, 'status': 0, 'contract_type': 0, 'auto_payment': 0, 'churn_date': 9191} (churn_date empty = Active, expected)
+packages: 10 -> 10 rows | duplicate package_ids removed=0 | invalid fees=0
+revenue: 109369 -> 109369 rows | duplicate customer-months removed=0 | negative-money rows flagged (kept, would be refunds/adjustments)=0 | net_revenue mismatches=0 | billed mismatches=0 | unknown customer refs=0 | unknown package refs=0
+subscriber_snapshot: 84 -> 84 rows | duplicate city-months removed=0 | balance mismatches=0
+dim_date: 365 -> 365 rows | duplicate dates removed=0

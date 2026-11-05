@@ -1,0 +1,88 @@
+// ============================================================
+// PakConnect Telecom (FICTIONAL, simulated data) - DAX Measures
+// Paste into Power BI Desktop: Modelling > New Measure.
+// Model assumed (Star Schema):
+//   dim_customers (1) -> (*) fact_revenue
+//   dim_packages  (1) -> (*) fact_revenue
+//   dim_date      (1) -> (*) fact_revenue   (on fact_revenue[month] = dim_date[date],
+//                                            using a month-grain date table OR mark
+//                                            dim_date as date table and relate
+//                                            fact_revenue[month] to a month-start key)
+//   dim_date      (1) -> (*) fact_subscribers (on month)
+// Mark dim_date as the date table (date column) for time intelligence.
+// fact_revenue and fact_subscribers must NEVER be joined directly -
+// DAX measures below respect their different grains by design:
+// subscriber measures read ONLY fact_subscribers, revenue measures
+// read ONLY fact_revenue, ARPU divides the two aggregated scalars.
+// ============================================================
+
+Total Revenue =
+SUM ( fact_revenue[net_revenue] )   // service revenue, tax EXCLUDED
+
+Total Billed Amount =
+SUM ( fact_revenue[total_billed_amount] )
+
+Total Tax =
+SUM ( fact_revenue[tax_amount] )
+
+Voice Revenue = SUM ( fact_revenue[voice_revenue] )
+Data Revenue  = SUM ( fact_revenue[data_revenue] )
+SMS Revenue   = SUM ( fact_revenue[sms_revenue] )
+VAS Revenue   = SUM ( fact_revenue[vas_revenue] )
+Total Discount = SUM ( fact_revenue[discount] )
+
+Active Subscribers =   // average active subscribers in the selected period
+AVERAGE ( fact_subscribers[average_active_subscribers] )  // per city rows; use SUMX over cities for a single month selection - see note
+// NOTE for a clean single number: create the visual at month grain, or use:
+// Active Subscribers (Month) = SUMX ( VALUES ( dim_date[year_month] ), SUM ( fact_subscribers[average_active_subscribers] ) ) / DISTINCTCOUNT ( dim_date[year_month] )
+
+New Subscribers =
+SUM ( fact_subscribers[new_subscribers] )
+
+Churned Subscribers =
+SUM ( fact_subscribers[churned_subscribers] )
+
+Opening Subscribers =
+SUM ( fact_subscribers[opening_subscribers] )
+
+Net Subscriber Growth =
+[New Subscribers] - [Churned Subscribers]
+
+Churn Rate =
+DIVIDE ( [Churned Subscribers], [Opening Subscribers], 0 )   // format as %
+
+Monthly ARPU =
+DIVIDE ( [Total Revenue], [Active Subscribers], 0 )
+// Denominator = average active subscribers (snapshot estimate:
+// (opening + closing) / 2). Numerator = NET service revenue only.
+// Never use Total Billed Amount here - tax is not service revenue.
+
+City ARPU =
+DIVIDE ( [Total Revenue], [Active Subscribers], 0 )
+// Same measure - it becomes city-correct automatically when the
+// visual / filter context is a single city, because BOTH sides are
+// filtered by that city (revenue via dim_customers[city],
+// subscribers via fact_subscribers[city]).
+
+Revenue Growth % =
+VAR _cur = [Total Revenue]
+VAR _prev =
+    CALCULATE ( [Total Revenue], DATEADD ( dim_date[date], -1, MONTH ) )
+RETURN
+    DIVIDE ( _cur - _prev, _prev, 0 )   // format as %; blank in Jan 2025 (no Dec 2024 data)
+
+Revenue Contribution % =
+DIVIDE (
+    [Total Revenue],
+    CALCULATE ( [Total Revenue], ALL ( dim_packages ), ALL ( dim_customers ) ),
+    0
+)   // format as %; works per package / city / segment in visual context
+
+Billed Customers =
+DISTINCTCOUNT ( fact_revenue[customer_id] )
+
+Avg Revenue per Customer Month =
+DIVIDE ( [Total Revenue], COUNTROWS ( fact_revenue ), 0 )
+
+Previous Month Revenue =
+CALCULATE ( [Total Revenue], DATEADD ( dim_date[date], -1, MONTH ) )

@@ -1,0 +1,265 @@
+
+===== customers.csv =====
+shape (rows, cols): (10000, 12)
+columns: ['customer_id', 'gender', 'age', 'city', 'region', 'join_date', 'segment', 'customer_type', 'status', 'contract_type', 'auto_payment', 'churn_date']
+dtypes:
+customer_id      object
+gender           object
+age               int64
+city             object
+region           object
+join_date        object
+segment          object
+customer_type    object
+status           object
+contract_type    object
+auto_payment       bool
+churn_date       object
+missing values per column:
+customer_id         0
+gender              0
+age                 0
+city                0
+region              0
+join_date           0
+segment             0
+customer_type       0
+status              0
+contract_type       0
+auto_payment        0
+churn_date       9191
+fully duplicated rows: 0
+unique values per column:
+customer_id      10000
+gender               2
+age                 53
+city                 7
+region               5
+join_date         1420
+segment              5
+customer_type        2
+status               2
+contract_type        3
+auto_payment         2
+churn_date         318
+numeric describe:
+            age
+count  10000.00
+mean      33.69
+std       10.27
+min       18.00
+25%       26.00
+50%       33.00
+75%       41.00
+max       70.00
+value counts [gender]: {'Male': 5624, 'Female': 4376}
+value counts [city]: {'Lahore': 2644, 'Karachi': 2371, 'Islamabad': 1528, 'Faisalabad': 1112, 'Multan': 870, 'Peshawar': 786, 'Quetta': 689}
+value counts [region]: {'Punjab': 4626, 'Sindh': 2371, 'Islamabad Capital Territory': 1528, 'Khyber Pakhtunkhwa': 786, 'Balochistan': 689}
+value counts [segment]: {'Mass': 4960, 'Premium': 1614, 'Family': 1307, 'Business': 1302, 'Student': 817}
+value counts [customer_type]: {'Prepaid': 7104, 'Postpaid': 2896}
+value counts [status]: {'Active': 9191, 'Churned': 809}
+value counts [contract_type]: {'Month-to-Month': 8829, 'One Year': 720, 'Two Year': 451}
+
+===== packages.csv =====
+shape (rows, cols): (10, 9)
+columns: ['package_id', 'package_name', 'package_type', 'monthly_fee', 'voice_minutes', 'sms_limit', 'data_limit_gb', 'validity_days', 'package_status']
+dtypes:
+package_id        object
+package_name      object
+package_type      object
+monthly_fee        int64
+voice_minutes      int64
+sms_limit          int64
+data_limit_gb      int64
+validity_days      int64
+package_status    object
+missing values per column:
+package_id        0
+package_name      0
+package_type      0
+monthly_fee       0
+voice_minutes     0
+sms_limit         0
+data_limit_gb     0
+validity_days     0
+package_status    0
+fully duplicated rows: 0
+unique values per column:
+package_id        10
+package_name      10
+package_type       4
+monthly_fee       10
+voice_minutes      9
+sms_limit          7
+data_limit_gb      9
+validity_days      3
+package_status     1
+numeric describe:
+       monthly_fee  voice_minutes  sms_limit  data_limit_gb  validity_days
+count        10.00          10.00      10.00          10.00          10.00
+mean       1015.00        1585.00    1690.00          26.60          24.80
+std         823.29        1827.57    1555.96          26.25          11.05
+min         100.00          50.00     100.00           1.00           1.00
+25%         387.50         200.00     625.00           6.25          30.00
+50%         700.00         650.00    1000.00          17.50          30.00
+75%        1650.00        2750.00    2750.00          37.50          30.00
+max        2500.00        5000.00    5000.00          80.00          30.00
+value counts [package_id]: {'PKG01': 1, 'PKG02': 1, 'PKG03': 1, 'PKG04': 1, 'PKG05': 1, 'PKG06': 1, 'PKG07': 1, 'PKG08': 1, 'PKG09': 1, 'PKG10': 1}
+value counts [package_name]: {'Super Data': 1, 'Smart Plus': 1, 'Unlimited Voice': 1, 'Premium Max': 1, 'Social Bundle': 1, 'Business Pro': 1, 'Daily Saver': 1, 'Weekly Power': 1, 'Student Package': 1, 'Family Connect': 1}
+value counts [package_type]: {'Hybrid': 5, 'Data': 3, 'Voice': 1, 'Business': 1}
+value counts [package_status]: {'Active': 10}
+
+===== revenue.csv =====
+shape (rows, cols): (109369, 12)
+columns: ['revenue_id', 'customer_id', 'month', 'package_id', 'voice_revenue', 'data_revenue', 'sms_revenue', 'vas_revenue', 'discount', 'net_revenue', 'tax_amount', 'total_billed_amount']
+dtypes:
+revenue_id              object
+customer_id             object
+month                   object
+package_id              object
+voice_revenue          float64
+data_revenue           float64
+sms_revenue            float64
+vas_revenue            float64
+discount               float64
+net_revenue            float64
+tax_amount             float64
+total_billed_amount    float64
+missing values per column:
+revenue_id             0
+customer_id            0
+month                  0
+package_id             0
+voice_revenue          0
+data_revenue           0
+sms_revenue            0
+vas_revenue            0
+discount               0
+net_revenue            0
+tax_amount             0
+total_billed_amount    0
+fully duplicated rows: 0
+unique values per column:
+revenue_id             109369
+customer_id             10000
+month                      12
+package_id                 10
+voice_revenue           61426
+data_revenue            76603
+sms_revenue             25697
+vas_revenue             50390
+discount                15594
+net_revenue             90306
+tax_amount              48581
+total_billed_amount     90306
+numeric describe:
+       voice_revenue  data_revenue  sms_revenue  vas_revenue   discount  net_revenue  tax_amount  total_billed_amount
+count      109369.00     109369.00    109369.00    109369.00  109369.00    109369.00   109369.00            109369.00
+mean          447.12        690.89        76.37       253.87      23.52      1444.74      231.16              1675.89
+std           438.53        561.50        82.73       256.98      51.54      1258.93      201.43              1460.35
+min             5.65         14.98         0.34         4.53       0.00        32.85        5.26                38.11
+25%            70.80        181.88        16.17        54.01       0.00       423.21       67.71               490.92
+50%           365.11        589.47        48.33       135.44       0.00       987.43      157.99              1145.42
+75%           699.18       1085.56       106.86       406.17      20.09      2271.71      363.47              2635.18
+max          2558.62       2944.77       763.04      1611.26     500.32      6655.56     1064.89              7720.45
+value counts [month]: {'2025-11-01': 9302, '2025-10-01': 9261, '2025-09-01': 9254, '2025-12-01': 9242, '2025-08-01': 9212, '2025-07-01': 9171, '2025-06-01': 9118, '2025-05-01': 9080, '2025-04-01': 9005, '2025-03-01': 8950, '2025-02-01': 8908, '2025-01-01': 8866}
+value counts [package_id]: {'PKG02': 15622, 'PKG01': 15129, 'PKG10': 15012, 'PKG05': 12276, 'PKG04': 11880, 'PKG03': 10884, 'PKG08': 8375, 'PKG07': 8061, 'PKG06': 7472, 'PKG09': 4658}
+
+===== subscriber_snapshot.csv =====
+shape (rows, cols): (84, 7)
+columns: ['month', 'city', 'opening_subscribers', 'new_subscribers', 'churned_subscribers', 'closing_subscribers', 'average_active_subscribers']
+dtypes:
+month                          object
+city                           object
+opening_subscribers             int64
+new_subscribers                 int64
+churned_subscribers             int64
+closing_subscribers             int64
+average_active_subscribers    float64
+missing values per column:
+month                         0
+city                          0
+opening_subscribers           0
+new_subscribers               0
+churned_subscribers           0
+closing_subscribers           0
+average_active_subscribers    0
+fully duplicated rows: 0
+unique values per column:
+month                         12
+city                           7
+opening_subscribers           78
+new_subscribers               33
+churned_subscribers           21
+closing_subscribers           77
+average_active_subscribers    83
+numeric describe:
+       opening_subscribers  new_subscribers  churned_subscribers  closing_subscribers  average_active_subscribers
+count                84.00            84.00                84.00                84.00                       84.00
+mean               1287.27            14.74                 9.63              1292.38                     1289.83
+std                 666.06            10.33                 5.20               669.67                      667.85
+min                 607.00             0.00                 0.00               610.00                      608.50
+25%                 709.50             7.00                 7.00               713.00                      712.00
+50%                 986.50            12.00                 9.00               991.00                      988.75
+75%                2095.50            21.00                12.25              2119.25                     2107.38
+max                2454.00            44.00                23.00              2454.00                     2450.50
+value counts [month]: {'2025-01-01': 7, '2025-02-01': 7, '2025-03-01': 7, '2025-04-01': 7, '2025-05-01': 7, '2025-06-01': 7, '2025-07-01': 7, '2025-08-01': 7, '2025-09-01': 7, '2025-10-01': 7, '2025-11-01': 7, '2025-12-01': 7}
+value counts [city]: {'Lahore': 12, 'Karachi': 12, 'Islamabad': 12, 'Faisalabad': 12, 'Multan': 12, 'Peshawar': 12, 'Quetta': 12}
+
+===== dim_date.csv =====
+shape (rows, cols): (365, 10)
+columns: ['date', 'day', 'month', 'month_name', 'month_start', 'quarter', 'year', 'year_month', 'weekday', 'weekday_name']
+dtypes:
+date            object
+day              int64
+month            int64
+month_name      object
+month_start     object
+quarter          int64
+year             int64
+year_month      object
+weekday          int64
+weekday_name    object
+missing values per column:
+date            0
+day             0
+month           0
+month_name      0
+month_start     0
+quarter         0
+year            0
+year_month      0
+weekday         0
+weekday_name    0
+fully duplicated rows: 0
+unique values per column:
+date            365
+day              31
+month            12
+month_name       12
+month_start      12
+quarter           4
+year              1
+year_month       12
+weekday           7
+weekday_name      7
+numeric describe:
+          day   month  quarter    year  weekday
+count  365.00  365.00   365.00   365.0    365.0
+mean    15.72    6.53     2.51  2025.0      3.0
+std      8.81    3.45     1.12     0.0      2.0
+min      1.00    1.00     1.00  2025.0      0.0
+25%      8.00    4.00     2.00  2025.0      1.0
+50%     16.00    7.00     3.00  2025.0      3.0
+75%     23.00   10.00     4.00  2025.0      5.0
+max     31.00   12.00     4.00  2025.0      6.0
+value counts [month_name]: {'January': 31, 'March': 31, 'July': 31, 'May': 31, 'December': 31, 'October': 31, 'August': 31, 'April': 30, 'September': 30, 'June': 30, 'November': 30, 'February': 28}
+value counts [month_start]: {'2025-01-01': 31, '2025-03-01': 31, '2025-07-01': 31, '2025-05-01': 31, '2025-12-01': 31, '2025-10-01': 31, '2025-08-01': 31, '2025-04-01': 30, '2025-09-01': 30, '2025-06-01': 30, '2025-11-01': 30, '2025-02-01': 28}
+value counts [year_month]: {'2025-01': 31, '2025-03': 31, '2025-07': 31, '2025-05': 31, '2025-12': 31, '2025-10': 31, '2025-08': 31, '2025-04': 30, '2025-09': 30, '2025-06': 30, '2025-11': 30, '2025-02': 28}
+value counts [weekday_name]: {'Wednesday': 53, 'Thursday': 52, 'Friday': 52, 'Saturday': 52, 'Sunday': 52, 'Monday': 52, 'Tuesday': 52}
+
+===== relationships =====
+revenue customer_ids not in customers: 0
+revenue package_ids not in packages: 0
+snapshot cities not in customers: []
+revenue months: ['2025-01-01', '2025-02-01', '2025-03-01', '2025-04-01', '2025-05-01', '2025-06-01', '2025-07-01', '2025-08-01', '2025-09-01', '2025-10-01', '2025-11-01', '2025-12-01']

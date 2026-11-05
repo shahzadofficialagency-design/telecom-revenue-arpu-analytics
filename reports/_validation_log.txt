@@ -1,0 +1,19 @@
+PASS | Duplicate customer IDs = 0 (found 0)
+PASS | Duplicate package IDs = 0 
+PASS | Duplicate customer-month revenue = 0 (found 0)
+PASS | Missing required customer IDs = 0 
+PASS | Invalid package references = 0 
+PASS | Revenue calculation mismatch = 0 (found 0)
+PASS | Billed = Net + Tax mismatch = 0 
+PASS | Invalid dates = 0 
+PASS | Subscriber balance mismatch = 0 
+PASS | Snapshot rows = 84 (found 84)
+PASS | Dim date rows = 365 (found 365)
+PASS | Customers = 10,000 (found 10000)
+PASS | Packages = 10 (found 10)
+PASS | No revenue before join month (found 0)
+PASS | No revenue after churn month (found 0)
+PASS | City consistency: every snapshot city exists in customers (cities: ['Faisalabad', 'Islamabad', 'Karachi', 'Lahore', 'Multan', 'Peshawar', 'Quetta'])
+PASS | No negative revenue / discount / tax 
+PASS | Ages within 18-100 
+PASS | ARPU denominator > 0 for all 12 months 

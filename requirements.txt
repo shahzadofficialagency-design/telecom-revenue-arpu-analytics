@@ -1,0 +1,10 @@
+pandas>=2.0
+numpy>=1.24
+matplotlib>=3.6
+seaborn>=0.13
+sqlalchemy>=2.0
+psycopg2-binary>=2.9
+jupyter>=1.0
+openpyxl>=3.1
+# faker is OPTIONAL and is not used by src/generate_data.py
+# (generation is pure NumPy/Pandas so the seed fully reproduces the data)
